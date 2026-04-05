@@ -199,4 +199,8 @@ return [
 
         'store' => 'default',
     ],
+    'defaults' => [
+        'guard' => env('AUTH_GUARD', 'manager'),
+        'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
+],
 ];
