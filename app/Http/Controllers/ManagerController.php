@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateRequest;
 use App\Models\Manager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ManagerController extends Controller
 {
@@ -35,15 +36,16 @@ class ManagerController extends Controller
 
 
 public function login(LoginRequest $request){
+    $creditials = $request->only('email','password');
     $validated = $request->validated();
+    $manager = Auth::guard('manager')->user();
 
-    if (!Auth::guard('manager')->attempt($validated)) {
+    if (!$manager || !Hash::check($request->password, $manager->password)) {
         return response()->json([
             'success' => false,
             'message' => 'Invalid credentials'
         ], 401);
     }
-    $manager = Auth::guard('manager')->user();
     $manager->tokens()->delete();
     $token = $manager->createToken('ApiToken')->plainTextToken;
 
