@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ScheduleController;
@@ -59,4 +60,12 @@ Route::controller(TeachingController::class)->group(function(){
     Route::get('teachings/{id}','show');
     Route::put('teachings/{id}','update');
     Route::delete('teachings/{id}','delete');
+});
+
+Route::controller(AttendanceController::class)->group(function(){
+    Route::get('attendances','index');
+    Route::post('attendances','store');
+    Route::get('attendances/{id}','show');
+    Route::put('attendances/{id}','update');
+    Route::delete('attendances/{id}','delete');
 });
