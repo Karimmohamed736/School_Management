@@ -23,6 +23,16 @@ class TeachingController extends Controller
             'subject_id' => 'required|exists:subjects,id',
         ]);
 
+        if (Teaching::where('teacher_id', $validatedData['teacher_id'])
+            ->where('subject_id', $validatedData['subject_id'])
+            ->exists()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'This teaching assignment already exists',
+            ], 409);
+        }
+
+
         $teaching = Teaching::create($validatedData);
 
         return response()->json([

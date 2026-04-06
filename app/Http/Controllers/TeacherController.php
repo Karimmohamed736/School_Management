@@ -69,9 +69,9 @@ class TeacherController extends Controller
         }
 
         $validatedData = $request->validate([
-            'name' => 'sometimes|required|string|max:255',
-            'email' => 'sometimes|required|string|email|max:255|unique:teachers,email,' . $teacher->id,
-            'password' => 'sometimes|required|string|min:8',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:teachers,email,' . $teacher->id,
+            'password' => 'required|string|min:8',
             'subjects' => 'array',
             'subjects.*' => 'exists:subjects,id',
         ]);
