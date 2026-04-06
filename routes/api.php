@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeachingController;
@@ -26,6 +27,14 @@ Route::controller(ClassroomController::class)->group(function(){
     Route::get('classrooms/{id}','show');
     Route::put('classrooms/{id}','update');
     Route::delete('classrooms/{id}','delete');
+});
+
+Route::controller(ScheduleController::class)->group(function(){
+    Route::get('schedule','index');
+    Route::post('schedule','store');
+    Route::get('schedule/{id}','show');
+    Route::put('schedule/{id}','update');
+    Route::delete('schedule/{id}','delete');
 });
 
 Route::controller(TeacherController::class)->group(function(){

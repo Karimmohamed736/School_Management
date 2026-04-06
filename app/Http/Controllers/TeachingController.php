@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Teaching;
+use App\Rules\CheckTeacherSubject;
 use Illuminate\Http\Request;
 
 class TeachingController extends Controller
@@ -20,18 +21,8 @@ class TeachingController extends Controller
     {
         $validatedData = $request->validate([
             'teacher_id' => 'required|exists:teachers,id',
-            'subject_id' => 'required|exists:subjects,id',
+            'subject_id' => [  'required', 'exists:subjects,id', new CheckTeacherSubject],
         ]);
-
-        if (Teaching::where('teacher_id', $validatedData['teacher_id'])
-            ->where('subject_id', $validatedData['subject_id'])
-            ->exists()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'This teaching assignment already exists',
-            ], 409);
-        }
-
 
         $teaching = Teaching::create($validatedData);
 
@@ -94,4 +85,6 @@ class TeachingController extends Controller
             'message' => 'Teaching deleted successfully',
         ]);
     }
+
+
 }

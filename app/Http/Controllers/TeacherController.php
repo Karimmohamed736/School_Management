@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class TeacherController extends Controller
 {
     public function index()
     {
+
         $teachers = Teacher::with('subjects')->get();
         return response()->json([
             'success' => true,
@@ -21,7 +23,7 @@ class TeacherController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:teachers',
+            'email' => 'required|string|email|max:255|unique:teachers,email',
             'password' => 'required|string|min:8',
             'subjects' => 'array',
             'subjects.*' => 'exists:subjects,id',

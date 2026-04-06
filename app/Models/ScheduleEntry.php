@@ -12,6 +12,8 @@ class ScheduleEntry extends Model
         'start_time',
         'end_time',
         'schedule_id',
+        'subject_id',
+        'teacher_id',
     ];
 
     public function schedule()

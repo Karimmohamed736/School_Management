@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('schedule_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
-        
+
     }
 
     /**
