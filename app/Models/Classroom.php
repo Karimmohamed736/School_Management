@@ -27,4 +27,9 @@ class Classroom extends Model
     {
         return $this->hasOne(Schedule::class);
     }
+
+    public function tests()
+    {
+        return $this->hasMany(Test::class);
+    }
 }
