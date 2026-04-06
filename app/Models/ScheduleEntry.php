@@ -8,7 +8,6 @@ class ScheduleEntry extends Model
 {
     protected $table = 'schedule_entries';
     protected $fillable = [
-        'subject',
         'start_time',
         'end_time',
         'schedule_id',
