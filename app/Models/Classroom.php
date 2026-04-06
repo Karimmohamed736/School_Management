@@ -11,7 +11,8 @@ class Classroom extends Model
     protected $fillable = [
         'name',
         'level_id',
-            ];
+        'capacity',
+        ];
     public function level()
     {
         return $this->belongsTo(Level::class);
