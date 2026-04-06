@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\ManagerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,3 +17,8 @@ Route::delete('manager/logout','logout')->middleware('auth:sanctum');
 });
 // });
 
+Route::controller(ClassroomController::class)->group(function(){
+    Route::get('classrooms','index');
+    Route::post('classrooms','store');
+    Route::get('classrooms/{id}','show');
+});
