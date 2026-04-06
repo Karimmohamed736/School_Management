@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('subject');
             $table->time('start_time');
             $table->time('end_time');
+            $table->unique(['schedule_id', 'start_time']);
             $table->foreignId('schedule_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
