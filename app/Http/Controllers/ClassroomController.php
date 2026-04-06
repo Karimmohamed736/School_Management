@@ -44,4 +44,35 @@ class ClassroomController extends Controller
             'schedule'=>$schedule
         ]);
     }
+
+    public function update(Request $request, $id){
+        $classroom= Classroom::find($id);
+        if(!$classroom){
+            return response()->json([
+                'success'=>false,
+                'message'=>'Classroom not found'
+            ],404);
+        }
+        $classroom->update($request->only('name', 'grade', 'section'));
+        return response()->json([
+            'success'=>true,
+            'message'=>'Classroom updated successfully',
+            'classroom'=>$classroom
+        ]);
+    }
+
+    public function delete($id){
+        $classroom= Classroom::find($id);
+        if(!$classroom){
+            return response()->json([
+                'success'=>false,
+                'message'=>'Classroom not found'
+            ],404);
+        }
+        $classroom->delete();
+        return response()->json([
+            'success'=>true,
+            'message'=>'Classroom deleted successfully',
+        ]);
+    }
 }

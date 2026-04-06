@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +22,14 @@ Route::controller(ClassroomController::class)->group(function(){
     Route::get('classrooms','index');
     Route::post('classrooms','store');
     Route::get('classrooms/{id}','show');
+    Route::put('classrooms/{id}','update');
+    Route::delete('classrooms/{id}','delete');
+});
+
+Route::controller(TeacherController::class)->group(function(){
+    Route::get('teachers','index');
+    Route::post('teachers','store');
+    Route::get('teachers/{id}','show');
+    Route::put('teachers/{id}','update');
+    Route::delete('teachers/{id}','delete');
 });
