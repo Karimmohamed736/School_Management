@@ -18,4 +18,9 @@ class ScheduleEntry extends Model
     {
         return $this->belongsTo(Schedule::class);
     }
+
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class);
+    }
 }
