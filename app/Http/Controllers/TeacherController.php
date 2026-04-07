@@ -114,4 +114,18 @@ class TeacherController extends Controller
             'message' => 'Teacher deleted successfully',
         ]);
     }
+
+
+    //Eloquent Relationship and Eager Loading
+    public function schedule (){
+        $teacher  = auth('teacher')->user();
+        $schedule = $teacher->scheduleEntries()->with(['schedule.classroom','subject']) //Eager Loading + chaining
+        ->orderBy('day')
+        ->orderBy('start_time')->get()->groupBy('day');  //Query Buider + Execute Query + Data Transformation
+
+        return response()->json([
+        'teacher' => $teacher->name,
+        'schedule' => $schedule
+    ]);
+    }
 }

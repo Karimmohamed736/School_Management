@@ -5,3 +5,8 @@
 - In api file, use middleware and get uri
 - Add in controller attendance and grades from relation witj students
 
+
+-Each Teacher has his own Schedule
+1- Guard for teacher
+2- there is relation between Teacher and ScheduleEntries (الحصص) one to many
+3- in

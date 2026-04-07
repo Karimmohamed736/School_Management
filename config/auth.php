@@ -2,6 +2,7 @@
 
 use App\Models\Manager;
 use App\Models\ParentModel;
+use App\Models\Teacher;
 use App\Models\User;
 
 return [
@@ -36,6 +37,10 @@ return [
             'driver' => 'sanctum',
             'provider' => 'parents',
         ],
+        'teacher' => [
+            'driver' => 'sanctum',
+            'provider' => 'teacher',
+        ],
 
 
     ],
@@ -66,6 +71,14 @@ return [
         'manager' => [
             'driver' => 'sanctum',
             'provider' => 'managers',
+        ],
+        'teacher' => [
+            'driver' => 'sanctum',
+            'provider' => 'teacher',
+        ],
+        'parent' => [
+            'driver' => 'sanctum',
+            'provider' => 'parent',
         ],
     ],
 
@@ -98,6 +111,10 @@ return [
         'parent' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', ParentModel::class),
+        ],
+        'teacher' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', Teacher::class),
         ],
 
         // 'users' => [
