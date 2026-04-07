@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Manager;
+use App\Models\ParentModel;
 use App\Models\User;
 
 return [
@@ -30,6 +31,13 @@ return [
             'driver' => 'sanctum',
             'provider' => 'managers',
         ],
+
+        'parent' => [
+            'driver' => 'sanctum',
+            'provider' => 'parents',
+        ],
+
+
     ],
 
     /*
@@ -86,6 +94,10 @@ return [
         'managers' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', Manager::class),
+        ],
+        'parent' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', ParentModel::class),
         ],
 
         // 'users' => [

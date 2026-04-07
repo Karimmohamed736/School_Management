@@ -9,6 +9,7 @@ class Student extends Model
 {
     use SoftDeletes;
     protected $fillable = [
+        'parent_id',
         'first_name',
         'last_name',
         'email',
@@ -45,4 +46,11 @@ class Student extends Model
     {
         return $this->hasMany(Grade::class);
     }
+
+        public function parent()
+    {
+        return $this->belongsTo(ParentModel::class, 'parent_id');
+    }
+
+
 }

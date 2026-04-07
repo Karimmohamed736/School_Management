@@ -1,0 +1,7 @@
+8- Parent Module
+- one to many with students
+- middleware to check Parent show its students
+- In, controller, by Eager loading or model, call model to get students that have Parent auth
+- In api file, use middleware and get uri
+- Add in controller attendance and grades from relation witj students
+

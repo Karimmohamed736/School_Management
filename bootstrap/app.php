@@ -14,8 +14,9 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
             'IsManager' => App\Http\Middleware\IsManager::class,
+            'ParentStudent'=>App\Http\Middleware\CheckParentStudent::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        
+
     })->create();

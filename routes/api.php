@@ -3,6 +3,7 @@
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\ParentModelController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
@@ -79,3 +80,12 @@ Route::controller(AttendanceController::class)->group(function () {
     Route::put('attendances/{id}', 'update');
     Route::delete('attendances/{id}', 'delete');
 });
+
+Route::middleware(['auth:parent','ParentStudent'])->group(function(){
+Route::controller(ParentModelController::class)->group(function(){
+    Route::get('/parent/students','myStudents');
+    Route::get('/parent/students/{student_id}/grades');
+    Route::get('/parent/students/{student_id}/attendance');
+});
+});
+
